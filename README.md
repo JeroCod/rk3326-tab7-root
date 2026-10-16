@@ -1,5 +1,7 @@
 # Blackview Tab 7 WiFi (RK3326) — bootloader AVB unlock & root
 
+[![CI](https://github.com/JeroCod/rk3326-tab7-root/actions/workflows/ci.yml/badge.svg)](https://github.com/JeroCod/rk3326-tab7-root/actions/workflows/ci.yml)
+
 Root for the **Blackview Tab 7 WiFi** (Rockchip **RK3326**, Android 12), a device
 whose bootloader ships **no working unlock** (`fastboot oem unlock` =
 *not implemented*, `fastboot flashing unlock` = stub). Root is achieved by

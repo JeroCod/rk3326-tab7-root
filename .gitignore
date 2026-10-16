@@ -3,3 +3,7 @@ release-assets/
 *.img
 # but keep the reference sources
 !tools/*.c
+
+# python
+__pycache__/
+*.pyc

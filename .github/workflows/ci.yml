@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Lint (real errors only)
+        run: |
+          pip install ruff
+          # E9/F63/F7/F82 = syntax errors, broken comparisons, undefined names
+          ruff check --select E9,F63,F7,F82 tools/ tests/
+
+      - name: End-to-end self-test (synthetic LOADER, no firmware needed)
+        run: python3 tests/selftest.py

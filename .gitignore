@@ -1,0 +1,5 @@
+# Release binaries are uploaded as GitHub Release assets, not committed to git
+release-assets/
+*.img
+# but keep the reference sources
+!tools/*.c
